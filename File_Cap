@@ -1,0 +1,60 @@
+Nesne yönelimli programlama dillerinde önemli bir yere sahip olan kapsülleme kavramını encapsulation olarak da görmemiz mümkündür.
+
+C# Kapsülleme, sınıf yapımız içerisinde yer alan private erişim seviyesindeki değişkenlerin ve metot yapılarının dışarıdan güvenli bir şekilde erişilmesini sağlamak amacıyla ya da güvenli bir şekilde muhafaza etmek için kullanılan önemli bir nesne yönelimli programlama özelliğidir. 🔒🔑
+
+Kapsülleme kavramının tanımı teorik olarak anlaması zor gelmiş olabilir. Bu yüzden bilindik bir örnekten yardım alarak anlatımımı destekleyeceğim. Bilgisayarımızı çalıştırmak için bir enerji kaynağına bağlı olması ve güç tuşuna basılmasının gerektiğini biliyoruz fakat bilgisayarımız açılırken hangi işlemleri uyguladığını bilmiyoruz. Sadece bu işlemlerin nasıl yapılacağı hakkında bir fikrimiz olabilir. Nesne yönelimli programlama olgusunda bu olaya kapsülleme yani encapsulation denir.
+
+Bu yapıyı anlayabilmek için programlama dillerinde bulunan erişim belirleyicilerini iyi tanımamız gerekmektedir. Bunun için daha önceden “C# OOP Nedir” içeriğinde paylaşmış olduğum bir görselden yardım alarak bu erişim belirleyicilerini biraz yakından tanıyalım.
+
+C Sharp Erişim Seviyeleri
+C# Kapsülleme Erişim Seviyeleri
+Yukarıdaki görsel erişim belirleyiciler kavramı hakkında bir fikir sahibi olmamıza yardımcı olsada genel hatlarıyla c# üzerinde bulunan erişim belirleyicilerinin hangi yapılarda nasıl erişim imkanı sağladığı hakkında bir fikir sahibi olamıyoruz. Bunun için basit bir tablo çiziminden yararlanabiliriz.
+
+C# Kapsülleme Nedir - Erişim Belirleyiciler
+C# Erişim Belirleyiciler
+Tabloda görüldüğü üzere kapsülleme için kullanacağımız private yani field (alan) özellikteki değişkenlere sadece bulunduğu sınıf üzerinden erişim sağlayabiliyoruz. Bu yapıya farklı yerlerden güvenli bir şekilde erişmek, içerisindeki veriyi değiştirmek istediğimiz zaman ise get ve set metotlarını kullanmamız gerekmektedir.
+
+Bu yüzden isterseniz bir sonraki aşamamız olan “C# Get ve Set Metotlarının Kullanımına” geçiş yapabiliriz. 🚀
+
+C# Get ve Set Metotları
+Kapsülleme kavramının temel prensibinin oluşturan get ve set metotlarını ulaşmak ya da değiştirmek istediğimiz yapıların kontrol mekanizması olarak düşünebiliriz. Karşılaşacağımız problemleri önlemek, uygulanacak işlemleri güvenilir ve kontrollü bir yapı içerisinde gerçekleştirmek için encapsulation işlemini uygularken get ve set metotlarını kullanırız.
+
+C# Get Metodu Nedir?
+Bir değişkenimizin ya da metot yapımızın değerine ulaşmak istediğimiz zaman daha önceden tanımlamış olduğumuz ulaşmak istediğimiz özelliğin GET metodu çalışır.
+
+C# Set Metodu Nedir?
+Erişim belirleyiciler ile kısıtlamış olduğumuz özelliği başka bir sınıf üzerinde atama gerçekleştirmek istediğimiz zaman SET metodundan faydalanırız. Atama gerçekleştirdiğimiz değere SET metodu içerisinde value anahtar sözcüğü ile erişim sağlanır. Bu (value) anahtar sözcüğün önceden belirlenmiş herhangi bir yapısı bulunmamaktadır. Yani özelliğimize atanacak değer türü hangi türden (string, int, double) ise value anahtar sözcüğümüz o türden olur.
+
+Not: Kapsülleme işlemini gerçekleştirirken kullanacağımız get ve set metotlarından sadece birini kullanarak özelliğimizin sadece okunabilir ya da atama yapılabilir bir hale getirmemiz mümkündür.
+Teorik olarak kapsülleme işlemini uygularken kullanacağımız get ve set metotlarını tanımış olduk. Fakat bu metot yapılarının nasıl kullanmamız gerektiği konusunda henüz bir fikre sahip değiliz. Bu yüzden isterseniz gelin birlikte basit bir tanımlama gerçekleştirerek get ve set metotlarının kullanımı hakkında fikir sahibi olalım. 💪🏻
+
+C# Get ve Set Metot Kullanımı
+GET ve SET metot yapılarını birden fazla yöntemle kullanmamız mümkündür. Klasik olarak en çok kullanacağımız ve sıklıkla göreceğimiz yapıyı görerek C# get ve set metot kullanımı hakkında ilk tanımlamamızı inceleyelim.
+
+private ulong TCKimlik;
+public ulong TCkimlikNo
+{
+    get
+    {
+        return TCKimlik;
+    }
+    set
+    {
+        TCKimlik = value;
+    }
+}
+Tabi istersek bu tanımı daha farklı bir şekilde kullanacağımız GET ve SET metot yapılarına erişim belirleyicisi tanımlayarak gerçekleştirebiliriz.
+
+private int telefonNo;
+public int TelefonNo
+{
+    get
+    {
+        return telefonNo;
+    }
+    private set
+    {
+        TelefonNo = value;
+    }
+}
+Klasik halden daha farkla bir hal almış olan bu kullanım örneğimizde SET metodunu private olarak tanımladık. Bu tanımlamamız yüzünden diğer sınıflardan ilgili özelliğimizin mevcut değeri okunabilirken bir atama işlemi gerçekleştirilemez.
